@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 library(ggplot2)
 library(tidyverse)
 library(corrplot)
@@ -20,3 +21,7 @@ cex.before <- par("cex")
 par(cex = 0.5)
 corrplot.mixed(cor_num, diag = "l", tl.col="black", tl.pos = "lt")
 par(cex = cex.before)
+=======
+library(tidyverse)
+
+>>>>>>> 3aeb91231ce52dd608aea79cc20c8dd58c01648e
