@@ -5,6 +5,7 @@ library(corrplot)
 library(dplyr)
 train <- read.csv ("train.csv", header=TRUE, sep=",")
 test <- read.csv("test.csv", header=TRUE, sep="," )
+
 all<- rbind(within(train, rm("SalePrice")), test)
 summary(train$SalePrice)
 ggplot(data=train, aes(x=SalePrice/100)) + geom_histogram (binwidth = 20 )
@@ -55,7 +56,7 @@ train$GarageCond<- recode(train$GarageCond,"None"=0,"Po"=1,"Fa"=2,"TA"=3,"Gd"=4,
 train$PoolQC<- recode(train$PoolQC,"None"=0,"Po"=1,"Fa"=2,"TA"=3,"Gd"=4,"Ex"=5)
 train$Fence<- recode(train$Fence,"None"=0,"MnWw"=1,"GdWo"=2,"MnPrv"=3,"GdPrv"=4)
 #additional
-train$Lotshape<-recode(train$LotShape,"Reg"=4,"IR1"=3,"IR2"=2,"IR3"=1)
+train$LotShape<-recode(train$LotShape,"Reg"=4,"IR1"=3,"IR2"=2,"IR3"=1)
 #all$<-recode(all$,)
 #Adding an important feature - Total area of basement
 train$TotalSF = train$TotalBsmtSF + train$X1stFlrSF + train$X2ndFlrSF
