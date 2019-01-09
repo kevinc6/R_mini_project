@@ -22,6 +22,7 @@ colSums(is.na(all))
 ##賣出的月份及年份
 ggplot(train, aes(x=as.factor(MoSold), y=SalePrice)) + geom_bar(stat='summary', fun.y = "median") + geom_label(stat = "count", aes(label = ..count.., y = ..count..)) + labs(x="Month Sold")
 ggplot(train, aes(x=as.factor(YrSold), y=SalePrice)) + geom_bar(stat='summary', fun.y = "median") + geom_label(stat = "count", aes(label = ..count.., y = ..count..)) + labs(x="Year Sold")
+##製造年份
 ggplot(data=train,aes(x=YearBuilt))+geom_bar(stat="count")
 ##Data Cleaning##
 all_plot$LotFrontage[is.na(all_plot$LotFrontage)] <- 0
