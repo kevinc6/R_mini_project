@@ -19,6 +19,10 @@ summary(train$SalePrice)
 ##房價分佈直方圖
 ggplot(data=train, aes(x=SalePrice/100)) + geom_histogram (binwidth = 20 )
 colSums(is.na(all))
+##賣出的月份及年份
+ggplot(train, aes(x=as.factor(MoSold), y=SalePrice)) + geom_bar(stat='summary', fun.y = "median") + geom_label(stat = "count", aes(label = ..count.., y = ..count..)) + labs(x="Month Sold")
+ggplot(train, aes(x=as.factor(YrSold), y=SalePrice)) + geom_bar(stat='summary', fun.y = "median") + geom_label(stat = "count", aes(label = ..count.., y = ..count..)) + labs(x="Year Sold")
+ggplot(data=train,aes(x=YearBuilt))+geom_bar(stat="count")
 ##Data Cleaning##
 all_plot$LotFrontage[is.na(all_plot$LotFrontage)] <- 0
 all_plot$MasVnrArea[is.na(all_plot$MasVnrArea)] <- 0
@@ -91,7 +95,7 @@ all <- complete(micemod)
 #重新分成train＆test
 train <- all[1:length(SalePrice),]
 test<-all[(length(SalePrice)+1):nrow(all),]
-#利用
+#利用svm modeling 
 svm_model<-svm(SalePrice~., data=train, cost = 3)
 
 svm_pred <- predict(svm_model,newdata = test)
